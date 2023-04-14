@@ -1,8 +1,19 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
+import eslint from "vite-plugin-eslint"
+import jsconfigPaths from "vite-jsconfig-paths"
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "/flexbox-playground/",
-  plugins: [react()]
+  plugins: [
+    react({
+      jsxImportSource: "@emotion/react",
+      babel: {
+        plugins: ["@emotion/babel-plugin"]
+      }
+    }),
+    eslint(),
+    jsconfigPaths()
+  ]
 })
